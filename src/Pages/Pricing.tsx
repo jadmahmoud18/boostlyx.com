@@ -1,26 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Header from "../Components/Header.tsx";
 import Footer from "../Components/Footer.tsx";
 import {
+  ArrowTrendingUpIcon,
   BoltIcon,
   UserGroupIcon,
-  ChartBarIcon,
   SparklesIcon,
-  LightBulbIcon,
-  ArrowTrendingUpIcon,
-  PaperAirplaneIcon,
-  BuildingOfficeIcon,
-  PaintBrushIcon,
   CheckIcon,
   BeakerIcon,
+  LightBulbIcon,
 } from "@heroicons/react/24/outline";
 
-export default function Home() {
-  const [text, setText] = useState("");
-  const fullText = "Premium growth services for businesses and influencers.";
-
+export default function Pricing() {
   const handleInternalClick = (cb?: () => void) => (e: React.MouseEvent) => {
     if (
       (e.target as HTMLAnchorElement).href.startsWith(
@@ -32,62 +25,8 @@ export default function Home() {
     if (cb) cb();
   };
 
-  const services = [
-    {
-      title: "Content Planner",
-      description: "Plan, schedule, and automatically publish posts with ease.",
-      href: "/services/content-planner",
-      icon: LightBulbIcon,
-    },
-    {
-      title: "Smart Analytics",
-      description: "Track growth, engagement, and audience insights.",
-      href: "/services/smart-analytics",
-      icon: ArrowTrendingUpIcon,
-    },
-    {
-      title: "Link-in-Bio",
-      description:
-        "Create a custom, branded page with all your links in minutes.",
-      href: "/services/link-in-bio",
-      icon: PaperAirplaneIcon,
-    },
-    {
-      title: "Team Access",
-      description: "Add team members with different roles and limits.",
-      href: "/services/team-access",
-      icon: UserGroupIcon,
-    },
-    {
-      title: "Bookings & Invoices",
-      description: "Accept payments and manage client calls and emails.",
-      href: "/services/bookings-and-invoices",
-      icon: BuildingOfficeIcon,
-    },
-    {
-      title: "Brand Kit",
-      description: "Store logos, colors, and use ready-to-go templates.",
-      href: "/services/brand-kit",
-      icon: PaintBrushIcon,
-    },
-  ];
-
   useEffect(() => {
-    let i = 0;
-    const typingInterval = setInterval(() => {
-      if (i < fullText.length) {
-        setText(fullText.substring(0, i + 1));
-        i++;
-      } else {
-        clearInterval(typingInterval);
-      }
-    }, 41);
-
-    return () => clearInterval(typingInterval);
-  }, []);
-
-  useEffect(() => {
-    document.title = "BoostLyx - Home";
+    document.title = "BoostLyx - Pricing";
     handleInternalClick();
   }, []);
 
@@ -306,8 +245,9 @@ export default function Home() {
 
   return (
     <>
-      <Header Page="Home" />
+      <Header Page="Pricing" />
       <BackgroundShapes />
+
       <section className="relative bg-transparent overflow-hidden">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 z-10">
           <motion.div
@@ -317,8 +257,10 @@ export default function Home() {
             className="text-center"
           >
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900">
-              <span className="block">Elevate Your Digital</span>
-              <span className="block text-indigo-600">Growth Potential</span>
+              <span className="block">Simple, Transparent</span>
+              <span className="block text-[#ffac33]">
+                Pricing <span className="text-indigo-600">Plans</span>
+              </span>
             </h1>
 
             <motion.p
@@ -327,229 +269,23 @@ export default function Home() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.1, duration: 0.6 }}
             >
-              {text}
-              <span className="inline-block w-1 h-6 bg-gray-600 ml-1 animate-pulse"></span>
+              Choose the perfect plan to fuel your growth journey
             </motion.p>
-
-            <motion.div
-              className="mt-10 flex flex-col sm:flex-row justify-center gap-4"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-            >
-              <motion.a
-                href="/start"
-                onClick={handleInternalClick()}
-                className="px-6 py-3 sm:px-8 sm:py-3 text-lg font-bold bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition-colors"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Get Started
-              </motion.a>
-
-              <motion.a
-                href="/services"
-                onClick={handleInternalClick()}
-                className="px-6 py-3 sm:px-8 sm:py-3 text-lg font-bold bg-white text-[#ffac33] border-2 border-[#ffac33] rounded-full hover:bg-[#fff9ef] transition-colors"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Learn More
-              </motion.a>
-            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      <section className="relative bg-transparent overflow-hidden">
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.1 }}
-          >
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-left mb-12 md:mb-16">
-              <span className="block text-[#ffac33]">Premium</span>
-              <span className="block text-gray-900">
-                Growth <span className="text-indigo-600">Services</span>
-              </span>
-            </h1>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-            {services.map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <motion.div
-                  key={service.title}
-                  className="bg-white bg-opacity-90 hover:cursor-pointer backdrop-blur-sm rounded-2xl p-8 border-2 border-[#4F46E54D] hover:border-indigo-100 transition-all duration-300"
-                  whileHover={{
-                    borderColor: "#4F46E5",
-                  }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: 0.1,
-                    delay: index * 0.1,
-                    type: "spring",
-                    stiffness: 100,
-                  }}
-                >
-                  <div className="w-14 h-14 flex items-center justify-center bg-indigo-100 text-indigo-600 rounded-xl mb-6">
-                    <Icon className="w-7 h-7" aria-hidden="true" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-600 text-lg mb-6">
-                    {service.description}
-                  </p>
-                  <Link
-                    to={service.href}
-                    onClick={handleInternalClick()}
-                    className="inline-flex items-center justify-center text-indigo-600 font-semibold group hover:underline"
-                  >
-                    Learn more
-                  </Link>
-                </motion.div>
-              );
-            })}
-          </div>
-
-          <motion.div
-            className="mt-20 text-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-          >
-            <Link
-              to="/services"
-              onClick={handleInternalClick()}
-              className="inline-block px-8 py-4 text-lg font-bold bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition-colors shadow-lg hover:shadow-xl"
-            >
-              Explore All Services
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="relative bg-transparent overflow-hidden">
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 z-10">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col items-center mb-20"
-          >
-            <div className="flex items-center">
-              <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mr-4">
-                Why
-              </h2>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center"
-              >
-                <Link
-                  to="/about#why-boostlyx"
-                  onClick={handleInternalClick()}
-                  aria-label="BoostLyx Logo"
-                >
-                  <img
-                    src="/logos/banner-color-purple-white.svg"
-                    alt="BoostLyx Logo"
-                    className="h-12 mt-1 mr-0 pr-0 sm:h-14 md:h-16 w-auto"
-                  />
-                </Link>
-              </motion.div>
-              <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 ml-4">
-                ?
-              </h2>
-            </div>
-          </motion.div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              {
-                title: "Easy To Use",
-                icon: BoltIcon,
-                color: "bg-indigo-600",
-                value: "95%*",
-                stat: "User Satisfaction",
-              },
-              {
-                title: "Faster Growth",
-                icon: ArrowTrendingUpIcon,
-                color: "bg-emerald-500",
-                value: "2x*",
-                stat: "Average Results",
-              },
-              {
-                title: "Time Saved",
-                icon: SparklesIcon,
-                color: "bg-amber-500",
-                value: "10+*",
-                stat: "Hours Weekly",
-              },
-              {
-                title: "Reliable",
-                icon: ChartBarIcon,
-                color: "bg-purple-600",
-                value: "99%*",
-                stat: "Uptime",
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  delay: index * 0.15,
-                  type: "spring",
-                }}
-                className="flex flex-col items-center"
-              >
-                <div
-                  className={`w-24 h-24 ${item.color} rounded-full flex items-center justify-center mb-4`}
-                >
-                  <item.icon className="w-10 h-10 text-white" />
-                </div>
-
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-gray-900">
-                    {item.value}
-                  </div>
-                  <h3 className="text-lg font-semibold text-gray-800 mt-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-gray-500 mt-1">{item.stat}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <p className="text-center text-sm text-gray-500 mt-12">
-            *Results may vary based on individual usage and subscription plan
-          </p>
-        </div>
-      </section>
-
-      <section className="relative bg-transparent overflow-hidden py-24 md:py-32">
+      <section className="relative bg-transparent overflow-hidden py-12 md:py-24">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+          {/* Pricing Toggle */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-20"
-          >
-            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900">
-              Pick Your <span className="text-[#ffac33]">Power-Up</span>
-            </h2>
-            <p className="mt-6 text-xl text-gray-600 max-w-3xl mx-auto">
-              Choose the perfect boost for your growth journey
-            </p>
-          </motion.div>
+            className="flex justify-center mb-16"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+          />
 
+          {/* Pricing Cards */}
           <div className="flex flex-col lg:flex-row justify-center gap-8 lg:gap-6 xl:gap-8">
             {[
               {
@@ -718,6 +454,59 @@ export default function Home() {
             ))}
           </div>
 
+          {/* FAQ Section */}
+          <motion.div
+            className="mt-24 max-w-4xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+          >
+            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+              Frequently Asked <span className="text-[#ffac33]">Questions</span>
+            </h2>
+
+            <div className="space-y-4">
+              {[
+                {
+                  question: "Can I switch plans later?",
+                  answer:
+                    "Yes, you can upgrade or downgrade your plan at any time from your account settings.",
+                },
+                {
+                  question: "Is there a contract or long-term commitment?",
+                  answer:
+                    "No, all plans are month-to-month with no long-term contracts. Cancel anytime.",
+                },
+                {
+                  question: "Do you offer discounts for non-profits?",
+                  answer:
+                    "Yes! We offer special pricing for registered non-profit organizations. Contact our sales team for details.",
+                },
+                {
+                  question: "What payment methods do you accept?",
+                  answer:
+                    "We accept all major credit cards, PayPal, and in some cases bank transfers for enterprise plans.",
+                },
+                {
+                  question: "How can I cancel my subscription?",
+                  answer:
+                    "You can cancel anytime from your account settings. No questions asked.",
+                },
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className="bg-white bg-opacity-80 backdrop-blur-sm rounded-xl p-6 border border-gray-200"
+                >
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    {item.question}
+                  </h3>
+                  <p className="text-gray-600">{item.answer}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Custom Solutions CTA */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -727,13 +516,13 @@ export default function Home() {
             <div className="inline-flex items-center bg-white rounded-full px-6 py-3 shadow-sm border border-gray-200">
               <LightBulbIcon className="w-5 h-5 text-indigo-600 mr-2" />
               <p className="text-gray-700">
-                Need custom solutions?{" "}
+                Need something custom?{" "}
                 <Link
                   to="/pricing/custom"
                   onClick={handleInternalClick()}
                   className="text-indigo-600 font-semibold hover:underline"
                 >
-                  Let's build it
+                  Let's build it together
                 </Link>
               </p>
             </div>
@@ -741,6 +530,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Community Section (same as home page) */}
       <section className="relative bg-transparent overflow-hidden py-24 md:py-32">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
           <div className="bg-gradient-to-br from-indigo-50 to-[#fff4e0] rounded-3xl p-8 md:p-12 lg:p-16 shadow-lg border-2 border-white overflow-hidden">
@@ -839,6 +629,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       <Footer />
     </>
   );
