@@ -5,13 +5,15 @@ import Header from "../Components/Header.tsx";
 import Footer from "../Components/Footer.tsx";
 import {
   BoltIcon,
-  UserGroupIcon,
   SparklesIcon,
+  UserGroupIcon,
   LightBulbIcon,
   ArrowTrendingUpIcon,
   PaperAirplaneIcon,
   BuildingOfficeIcon,
   PaintBrushIcon,
+  CameraIcon,
+  CodeBracketIcon,
 } from "@heroicons/react/24/outline";
 
 export default function Services() {
@@ -28,16 +30,34 @@ export default function Services() {
 
   const services = [
     {
+      title: "Content Generator",
+      description:
+        "Automatically generate powerful content that our intelligence sees viral.",
+      href: "/services/content-generator",
+      icon: CameraIcon,
+      color: "bg-teal-100 text-teal-600",
+    },
+    {
       title: "Content Planner",
       description: "Plan, schedule, and automatically publish posts with ease.",
       href: "/services/content-planner",
       icon: LightBulbIcon,
+      color: "bg-purple-100 text-purple-600",
+    },
+    {
+      title: "Website builder",
+      description:
+        "Build an amaing website for you using our amazing AI website builder.",
+      href: "/services/website-builder",
+      icon: CodeBracketIcon,
+      color: "bg-amber-100 text-amber-600",
     },
     {
       title: "Smart Analytics",
       description: "Track growth, engagement, and audience insights.",
       href: "/services/smart-analytics",
       icon: ArrowTrendingUpIcon,
+      color: "bg-blue-100 text-blue-600",
     },
     {
       title: "Link-in-Bio",
@@ -45,29 +65,33 @@ export default function Services() {
         "Create a custom, branded page with all your links in minutes.",
       href: "/services/link-in-bio",
       icon: PaperAirplaneIcon,
+      color: "bg-teal-100 text-teal-600",
     },
     {
       title: "Team Access",
       description: "Add team members with different roles and limits.",
       href: "/services/team-access",
       icon: UserGroupIcon,
+      color: "bg-amber-100 text-amber-600",
     },
     {
       title: "Bookings & Invoices",
       description: "Accept payments and manage client calls and emails.",
       href: "/services/bookings-and-invoices",
       icon: BuildingOfficeIcon,
+      color: "bg-emerald-100 text-emerald-600",
     },
     {
       title: "Brand Kit",
       description: "Store logos, colors, and use ready-to-go templates.",
       href: "/services/brand-kit",
       icon: PaintBrushIcon,
+      color: "bg-pink-100 text-pink-600",
     },
   ];
 
   useEffect(() => {
-    document.title = "BoostLyx - Home";
+    document.title = "BoostLyx - Services";
     handleInternalClick();
   }, []);
 
@@ -309,15 +333,15 @@ export default function Services() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.1, duration: 0.6 }}
             >
-              BoostLyx offers a dozen of premium services at the most competitve
-              prices
+              BoostLyx offers a dozen of premium services at the most
+              competitive prices
             </motion.p>
           </motion.div>
         </div>
       </section>
 
       <section className="relative bg-transparent overflow-hidden">
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 z-10">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 md:pb-32 z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -330,15 +354,83 @@ export default function Services() {
             </h1>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+          {/* New Services Grid Layout */}
+          <div className="bg-white bg-opacity-80 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
+            {/* Table Header */}
+            <div className="grid grid-cols-12 gap-4 p-6 bg-gradient-to-r from-indigo-50 to-amber-50 border-b border-gray-200">
+              <div className="col-span-12 md:col-span-6 lg:col-span-7">
+                <h3 className="text-lg font-semibold text-gray-700">Service</h3>
+              </div>
+              <div className="col-span-6 md:col-span-3 lg:col-span-3 hidden md:block">
+                <h3 className="text-lg font-semibold text-gray-700">
+                  Description
+                </h3>
+              </div>
+              <div className="col-span-6 md:col-span-3 lg:col-span-2 text-left"></div>
+            </div>
+
+            {/* Services List */}
+            <div className="divide-y divide-gray-100">
+              {services.map((service, index) => {
+                const Icon = service.icon;
+                return (
+                  <motion.div
+                    key={service.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.1,
+                      delay: index * 0.1,
+                      type: "spring",
+                      stiffness: 100,
+                    }}
+                    whileHover={{ backgroundColor: "rgba(249, 250, 251, 0.8)" }}
+                    className="grid grid-cols-12 gap-4 p-6 hover:bg-gray-50 transition-colors duration-200"
+                  >
+                    <div className="col-span-12 md:col-span-6 lg:col-span-7 flex items-center">
+                      <div
+                        className={`w-12 h-12 flex items-center justify-center rounded-lg ${service.color} mr-4`}
+                      >
+                        <Icon className="w-6 h-6" aria-hidden="true" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold text-gray-900">
+                          {service.title}
+                        </h3>
+                        <p className="text-gray-600 md:hidden mt-1">
+                          {service.description}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="col-span-6 md:col-span-3 lg:col-span-3 hidden md:block">
+                      <p className="text-gray-600">{service.description}</p>
+                    </div>
+                    <div className="col-span-6 md:col-span-3 lg:col-span-2 flex items-center justify-end">
+                      <Link
+                        to={service.href}
+                        onClick={handleInternalClick()}
+                        className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors text-sm font-medium whitespace-nowrap"
+                      >
+                        View Details
+                      </Link>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Alternative Card View (Hidden by default, can be toggled) */}
+          <div className="hidden grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 mt-12">
             {services.map((service, index) => {
               const Icon = service.icon;
               return (
                 <motion.div
                   key={service.title}
-                  className="bg-white bg-opacity-90 hover:cursor-pointer backdrop-blur-sm rounded-2xl p-8 border-2 border-[#4F46E54D] hover:border-indigo-100 transition-all duration-300"
+                  className="bg-white bg-opacity-90 backdrop-blur-sm rounded-2xl p-6 border-2 border-gray-200 hover:border-indigo-300 transition-all duration-300 shadow-sm hover:shadow-md"
                   whileHover={{
-                    borderColor: "#4F46E5",
+                    y: -5,
+                    boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
                   }}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -349,21 +441,37 @@ export default function Services() {
                     stiffness: 100,
                   }}
                 >
-                  <div className="w-14 h-14 flex items-center justify-center bg-indigo-100 text-indigo-600 rounded-xl mb-6">
-                    <Icon className="w-7 h-7" aria-hidden="true" />
+                  <div
+                    className={`w-14 h-14 flex items-center justify-center rounded-xl mb-4 ${service.color}`}
+                  >
+                    <Icon className="w-6 h-6" aria-hidden="true" />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
                     {service.title}
                   </h3>
-                  <p className="text-gray-600 text-lg mb-6">
+                  <p className="text-gray-600 text-sm mb-4">
                     {service.description}
                   </p>
                   <Link
                     to={service.href}
                     onClick={handleInternalClick()}
-                    className="inline-flex items-center justify-center text-indigo-600 font-semibold group hover:underline"
+                    className="inline-flex items-center text-indigo-600 font-medium text-sm group hover:underline"
                   >
                     Learn more
+                    <svg
+                      className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
                   </Link>
                 </motion.div>
               );
@@ -371,22 +479,37 @@ export default function Services() {
           </div>
 
           <motion.div
-            className="mt-20 text-center"
+            className="mt-16 text-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}
           >
             <Link
-              to="/services"
+              to="/pricing"
               onClick={handleInternalClick()}
-              className="inline-block px-8 py-4 text-lg font-bold bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition-colors shadow-lg hover:shadow-xl"
+              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transition-all"
             >
-              Explore All Services
+              Compare Pricing Plans
+              <svg
+                className="ml-2 -mr-1 w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 19l7-7-7-7"
+                />
+              </svg>
             </Link>
           </motion.div>
         </div>
       </section>
 
+      {/* Keep the Community section exactly the same */}
       <section className="relative bg-transparent overflow-hidden py-24 md:py-32">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
           <div className="bg-gradient-to-br from-indigo-50 to-[#fff4e0] rounded-3xl p-8 md:p-12 lg:p-16 shadow-lg border-2 border-white overflow-hidden">
