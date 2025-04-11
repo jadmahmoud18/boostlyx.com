@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Header from "../Components/Header.tsx";
 import Footer from "../Components/Footer.tsx";
 import {
+  CameraIcon,
   BoltIcon,
   UserGroupIcon,
   ChartBarIcon,
@@ -11,10 +12,9 @@ import {
   LightBulbIcon,
   ArrowTrendingUpIcon,
   PaperAirplaneIcon,
-  BuildingOfficeIcon,
-  PaintBrushIcon,
   CheckIcon,
   BeakerIcon,
+  CodeBracketIcon,
 } from "@heroicons/react/24/outline";
 
 export default function Home() {
@@ -34,16 +34,19 @@ export default function Home() {
 
   const services = [
     {
-      title: "Content Planner",
-      description: "Plan, schedule, and automatically publish posts with ease.",
-      href: "/services/content-planner",
-      icon: LightBulbIcon,
+      title: "Content Generator",
+      description:
+        "Automatically generate powerful content that our intelligence sees viral.",
+      href: "/services/content-generator",
+      icon: CameraIcon,
     },
     {
-      title: "Smart Analytics",
-      description: "Track growth, engagement, and audience insights.",
-      href: "/services/smart-analytics",
-      icon: ArrowTrendingUpIcon,
+      title: "Website builder",
+      description:
+        "Build an amaing website for you using our amazing AI website builder.",
+      href: "/services/website-builder",
+      icon: CodeBracketIcon,
+      color: "bg-amber-100 text-amber-600",
     },
     {
       title: "Link-in-Bio",
@@ -53,22 +56,24 @@ export default function Home() {
       icon: PaperAirplaneIcon,
     },
     {
+      title: "Content Planner",
+      description: "Plan, schedule, and automatically publish posts with ease.",
+      href: "/services/content-planner",
+      icon: LightBulbIcon,
+    },
+
+    {
+      title: "Smart Analytics",
+      description: "Track growth, engagement, and audience insights.",
+      href: "/services/smart-analytics",
+      icon: ArrowTrendingUpIcon,
+    },
+
+    {
       title: "Team Access",
       description: "Add team members with different roles and limits.",
       href: "/services/team-access",
       icon: UserGroupIcon,
-    },
-    {
-      title: "Bookings & Invoices",
-      description: "Accept payments and manage client calls and emails.",
-      href: "/services/bookings-and-invoices",
-      icon: BuildingOfficeIcon,
-    },
-    {
-      title: "Brand Kit",
-      description: "Store logos, colors, and use ready-to-go templates.",
-      href: "/services/brand-kit",
-      icon: PaintBrushIcon,
     },
   ];
 
@@ -338,7 +343,7 @@ export default function Home() {
               transition={{ delay: 0.2, duration: 0.6 }}
             >
               <motion.a
-                href="/start"
+                href="https://www.dash.boostlyx.com/accounts/start"
                 onClick={handleInternalClick()}
                 className="px-6 py-3 sm:px-8 sm:py-3 text-lg font-bold bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition-colors"
                 whileHover={{ scale: 1.02 }}

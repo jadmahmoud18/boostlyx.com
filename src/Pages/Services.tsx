@@ -38,26 +38,12 @@ export default function Services() {
       color: "bg-teal-100 text-teal-600",
     },
     {
-      title: "Content Planner",
-      description: "Plan, schedule, and automatically publish posts with ease.",
-      href: "/services/content-planner",
-      icon: LightBulbIcon,
-      color: "bg-purple-100 text-purple-600",
-    },
-    {
       title: "Website builder",
       description:
         "Build an amaing website for you using our amazing AI website builder.",
       href: "/services/website-builder",
       icon: CodeBracketIcon,
       color: "bg-amber-100 text-amber-600",
-    },
-    {
-      title: "Smart Analytics",
-      description: "Track growth, engagement, and audience insights.",
-      href: "/services/smart-analytics",
-      icon: ArrowTrendingUpIcon,
-      color: "bg-blue-100 text-blue-600",
     },
     {
       title: "Link-in-Bio",
@@ -67,6 +53,22 @@ export default function Services() {
       icon: PaperAirplaneIcon,
       color: "bg-teal-100 text-teal-600",
     },
+    {
+      title: "Content Planner",
+      description: "Plan, schedule, and automatically publish posts with ease.",
+      href: "/services/content-planner",
+      icon: LightBulbIcon,
+      color: "bg-purple-100 text-purple-600",
+    },
+
+    {
+      title: "Smart Analytics",
+      description: "Track growth, engagement, and audience insights.",
+      href: "/services/smart-analytics",
+      icon: ArrowTrendingUpIcon,
+      color: "bg-blue-100 text-blue-600",
+    },
+
     {
       title: "Team Access",
       description: "Add team members with different roles and limits.",
